@@ -1,5 +1,6 @@
 body {
   background-color: #3fbfff;
+  overflow-x: hidden; /* Prevent horizontal scrollbar from clouds */
 }
 
 footer {
@@ -24,4 +25,28 @@ footer nav a {
 
 footer nav a:hover {
   text-decoration: underline;
+}
+
+/* ===================== */
+/*   CLOUD ANIMATIONS    */
+/* ===================== */
+
+.cloud {
+  position: fixed;        /* Fixed so clouds float over the page */
+  top: 0;
+  right: -300px;          /* Start off-screen to the right */
+  width: 200px;           /* Adjust to fit your cloud image sizes */
+  pointer-events: none;   /* Visitors cannot interact with clouds */
+  z-index: 0;             /* Behind page content */
+  animation: floatCloud linear forwards;
+}
+
+@keyframes floatCloud {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Move far enough left to go fully off the left side of the screen */
+    transform: translateX(calc(-100vw - 300px));
+  }
 }
