@@ -8,33 +8,37 @@
 </head>
   <body>
 
-    <h1>Justin Ong</h1>
+    <main>
 
-    <h2>Few things about me!</h2>
-    <ul>
-      <li>Born and raised in San Francisco</li>
-      <li>Joined the US Marine Corps Reserve after high school</li>
-      <li>Worked a few random jobs at <a href="https://www.6waves.com/">some</a> <a href="https://tango.me/">cool</a> <a href="https://www.gummicube.com/">places</a></li>
-      <li>Earned two ASS. degrees from <a href="https://www.ccsf.edu/">CCSF</a> and a BA and MS in econ from <a href="https://www.sfsu.edu/">SFSU</a></li>
-      <li>Worked as a swing shift security guard at <a href="https://github.com/">GitHub</a> while workin' on AA, AS, and BA for 4 years</li>
-      <li>Applied to, and offered, a Sales Ops role at GitHub after earning my BA 🥲</li>
-      <li>I have a lovely wife, kiddo, and two cats</li>
-      <li>I'm a huge video game and history nerd</li>
-    </ul>
+      <h1>Justin Ong</h1>
 
-    <!--
-    <a href="about.html">About</a>
-    -->
+      <h2>Few things about me!</h2>
+      <ul>
+        <li>Born and raised in San Francisco</li>
+        <li>Joined the US Marine Corps Reserve after high school</li>
+        <li>Worked a few random jobs at <a href="https://www.6waves.com/">some</a> <a href="https://tango.me/">cool</a> <a href="https://www.gummicube.com/">places</a></li>
+        <li>Earned two ASS. degrees from <a href="https://www.ccsf.edu/">CCSF</a> and a BA and MS in econ from <a href="https://www.sfsu.edu/">SFSU</a></li>
+        <li>Worked as a swing shift security guard at <a href="https://github.com/">GitHub</a> while workin' on AA, AS, and BA for 4 years</li>
+        <li>Applied to, and offered, a Sales Ops role at GitHub after earning my BA 🥲</li>
+        <li>I have a lovely wife, kiddo, and two cats</li>
+        <li>I'm a huge video game and history nerd</li>
+      </ul>
 
-    <footer>
-      <h3>How to heckle me</h3>
-      <nav>
-        <a href="https://github.com/justinong415" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/justinong415/" target="_blank">LinkedIn</a>
-        <a href="https://bsky.app/profile/henchmanjustin.bsky.social" target="_blank">BlueSky</a>
-        <a href="mailto:henchmanjustin@gmail.com" target="_blank">Email</a>
-      </nav>
-    </footer>
+      <!--
+      <a href="about.html">About</a>
+      -->
+
+      <footer>
+        <h3>How to heckle me</h3>
+        <nav>
+          <a href="https://github.com/justinong415" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/justinong415/" target="_blank">LinkedIn</a>
+          <a href="https://bsky.app/profile/henchmanjustin.bsky.social" target="_blank">BlueSky</a>
+          <a href="mailto:henchmanjustin@gmail.com" target="_blank">Email</a>
+        </nav>
+      </footer>
+
+    </main>
 
     <!-- ===================== -->
     <!--   CLOUD ANIMATION JS  -->
@@ -69,34 +73,28 @@
           'images/pikachu_balloons.gif'
       ];
 
-      const CLOUD_DURATION_MS = 30000; // How long (ms) each cloud takes to cross the screen
-      const TRIGGER_PERCENT   = 0.25;  // Spawn next cloud when current is 25% across screen
+      const CLOUD_DURATION_MS = 30000;
+      const TRIGGER_PERCENT   = 0.25;
 
       let currentCloud = null;
       let spawnTimeout = null;
 
       function getRandomCloud() {
-        // Pick a random cloud image
         return cloudImages[Math.floor(Math.random() * cloudImages.length)];
       }
 
       function getRandomAltitude() {
-        // Random vertical position: anywhere from 2% to 80% of the screen height
         const percent = Math.random() * 78 + 2;
         return percent + 'vh';
       }
 
       function spawnCloud() {
-        // Create a new cloud element
         const cloud = document.createElement('img');
         cloud.src = getRandomCloud();
         cloud.classList.add('cloud');
         cloud.style.top = getRandomAltitude();
-
-        // Set the animation duration
         cloud.style.animationDuration = CLOUD_DURATION_MS + 'ms';
 
-        // Remove cloud from DOM when animation ends
         cloud.addEventListener('animationend', () => {
           cloud.remove();
         });
@@ -104,14 +102,12 @@
         document.body.appendChild(cloud);
         currentCloud = cloud;
 
-        // Schedule next cloud spawn at 25% across the screen
         const triggerTime = CLOUD_DURATION_MS * TRIGGER_PERCENT;
         spawnTimeout = setTimeout(() => {
           spawnCloud();
         }, triggerTime);
       }
 
-      // Kick off the first cloud on page load
       spawnCloud();
     </script>
 
