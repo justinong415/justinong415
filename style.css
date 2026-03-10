@@ -1,3 +1,8 @@
+main {
+  position: relative;
+  z-index: 1;         /* In front of clouds */
+}
+
 body {
   background-color: #3fbfff;
   overflow-x: hidden; /* Prevent horizontal scrollbar from clouds */
