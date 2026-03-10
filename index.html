@@ -36,5 +36,68 @@
       </nav>
     </footer>
 
+    <!-- ===================== -->
+    <!--   CLOUD ANIMATION JS  -->
+    <!-- ===================== -->
+    <script>
+      const cloudImages = [
+          'images/cloud-1.png',
+          'images/cloud-2.png',
+          'images/cloud-3.png',
+          'images/cloud-4.png',
+          'images/cloud-5.png',
+          'images/airship-1.png',
+          'images/airship-2.png',
+          'images/airship-3.png',
+          'images/airship-4.png',
+          'images/airship-5.png',
+      ];
+
+      const CLOUD_DURATION_MS = 30000; // How long (ms) each cloud takes to cross the screen
+      const TRIGGER_PERCENT   = 0.25;  // Spawn next cloud when current is 25% across screen
+
+      let currentCloud = null;
+      let spawnTimeout = null;
+
+      function getRandomCloud() {
+        // Pick a random cloud image
+        return cloudImages[Math.floor(Math.random() * cloudImages.length)];
+      }
+
+      function getRandomAltitude() {
+        // Random vertical position: anywhere from 2% to 80% of the screen height
+        const percent = Math.random() * 78 + 2;
+        return percent + 'vh';
+      }
+
+      function spawnCloud() {
+        // Create a new cloud element
+        const cloud = document.createElement('img');
+        cloud.src = getRandomCloud();
+        cloud.classList.add('cloud');
+        cloud.style.top = getRandomAltitude();
+
+        // Set the animation duration
+        cloud.style.animationDuration = CLOUD_DURATION_MS + 'ms';
+
+        // Remove cloud from DOM when animation ends
+        cloud.addEventListener('animationend', () => {
+          cloud.remove();
+        });
+
+        document.body.appendChild(cloud);
+        currentCloud = cloud;
+
+        // Schedule next cloud spawn at 25% across the screen
+        const triggerTime = CLOUD_DURATION_MS * TRIGGER_PERCENT;
+        spawnTimeout = setTimeout(() => {
+          spawnCloud();
+        }, triggerTime);
+      }
+
+      // Kick off the first cloud on page load
+      spawnCloud();
+    </script>
+
   </body>
 </html>
