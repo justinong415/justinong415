@@ -41,8 +41,10 @@ footer nav a:hover {
   top: 0;
   right: -300px;          /* Start off-screen to the right */
   width: 200px;           /* Adjust to fit your cloud image sizes */
+  height: auto;         /* Use the image's natural height */
+  width: auto;          /* Use the image's natural width */
   pointer-events: none;   /* Visitors cannot interact with clouds */
-  z-index: 0;             /* Behind page content */
+  z-index: -1;             /* Behind page content */
   animation: floatCloud linear forwards;
 }
 
