@@ -38,7 +38,7 @@ footer nav a:hover {
 
 /* Contact icons */
 .contact-icon {
-  height: auto;           /* Match your link text height (~24px) */
+  height: 24px;           /* Match your link text height (~24px) */
   width: auto;            /* Scale width naturally */
   display: inline-block;
   vertical-align: middle;
