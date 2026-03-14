@@ -23,13 +23,25 @@ footer nav {
   gap: 20px;
 }
 
+/* Align icon and text side by side */
 footer nav a {
   text-decoration: none;
   color: #0070f3;
+  display: flex;          /* Puts icon and text in a row */
+  align-items: center;    /* Vertically centers icon with text */
+  gap: 6px;               /* Space between icon and text */
 }
 
 footer nav a:hover {
   text-decoration: underline;
+}
+
+/* Contact icons */
+.contact-icon {
+  height: 20px;           /* Match your link text height (~24px) */
+  width: auto;            /* Scale width naturally */
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* ===================== */
@@ -57,3 +69,6 @@ footer nav a:hover {
     transform: translateX(calc(-100vw - 300px));
   }
 }
+
+
+
